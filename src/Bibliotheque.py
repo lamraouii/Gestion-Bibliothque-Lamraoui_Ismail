@@ -53,7 +53,7 @@ class Bibliotheque:
         else:
             livre._status=Status.NotDispo  #hadi enum ghir bach nbsst
             membre._livres_empruntes.append(livre)
-            self.Save_historique(datetime.now().strftime("%Y-%m-%d"),livre,membre,"emprunte")
+            self.Save_historique(datetime.now().strftime("%Y-%m-%d"),livre,membre,"emprunt")
             # print("lktab tzad")
 
     def Rendre_livre(self,membre,livre):
@@ -138,16 +138,40 @@ class Bibliotheque:
         plt.title(r"% de livres par genre")
         plt.show()
 
-    # def top_10_authors(self):
-    #     all_authors={}
-    #     with open (r"C:\Users\ismai\DevProjects\BibPython\data\historique.csv","r") as f:
-    #         for lines in 
-    #         data=f.readline()
-    #         if 
+    def top_10_authors(self):
+        all_authors={}
+        with open (r"C:\Users\ismai\DevProjects\BibPython\data\historique.csv","r") as f:
+            line =f.readline()
+            while line:
+                elem= line.split(";") # lines mfar9in b ;
+                if len(elem) != 4 and elem[3] != "emprunt":    # bach n assuriw bli kayni 4 dles champs
+                    continue
+                else:
+                    temp_isbn=elem[1]
+                author=self.__listLivres[temp_isbn]._auteur
+                if author not in all_authors:
+                    all_authors[author]=1
+                else: 
+                    all_authors[author] +=1
+                line =f.readline()
+        top_authors=sorted(all_authors.items(), key=lambda x: x[1], reverse= True) #return a list of tupels not a dict 
+        # lamda x:x[1] bach nsortiw b lvalues machi bnames d authors
+        top_authors=top_authors[:10]
+        ky,vl=zip(*top_authors)   # unzip the list 
+        plt.bar(ky,vl)
+        # plt.xticks(rotation=45)  the plot in rotated (i9der ikono smawat twal)
+        plt.title("Top 10 des auteurs les plus populaires")
+        plt.show()
+            
+    def stats_30_days (self):
 
-        
-        
-        
-        
+        with open(r"C:\Users\ismai\DevProjects\BibPython\data\historique.csv","r") as f :
+            line=f.readline()
+            while line:
+                elem= line.split(";")
+                if elem[3] != "emprunt":
+                    continue
+            else:
+                
+                line=f.readline()
 
-        
