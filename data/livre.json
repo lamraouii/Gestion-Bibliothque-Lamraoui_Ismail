@@ -1,0 +1,18 @@
+[
+  {
+    "isbn": "1111",
+    "titre": "saheh",
+    "auteur": "ana",
+    "annee": 2040,
+    "genre": "fiqh",
+    "statut": "disponible"
+  },
+  {
+    "isbn": "11",
+    "titre": "rasa2il",
+    "auteur": "farid",
+    "annee": 2003,
+    "genre": "dini",
+    "statut": "emprunte"
+  }
+]
