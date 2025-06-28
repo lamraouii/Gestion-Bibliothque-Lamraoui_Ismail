@@ -2,23 +2,30 @@
   {
     "id": 1,
     "nom": "smail",
-    "livres_empruntes": []
+    "livres_empruntes": [
+      "10"
+    ]
   },
   {
     "id": 2,
     "nom": "mehdi",
-    "livres_empruntes": []
+    "livres_empruntes": [
+      "50"
+    ]
   },
   {
     "id": 3,
     "nom": "amine",
-    "livres_empruntes": []
+    "livres_empruntes": [
+      "20"
+    ]
   },
   {
     "id": 4,
     "nom": "mohamed",
     "livres_empruntes": [
-      "40"
+      "40",
+      "30"
     ]
   },
   {

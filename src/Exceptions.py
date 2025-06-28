@@ -94,3 +94,9 @@ class LivreInexistantError (Exception):
 # ]
 
 #     json.dump(dt,f,indent=2)
+
+
+
+# Makataba._Bibliotheque__listLivres.values()
+
+#  to access to the private attribute in an instance 

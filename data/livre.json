@@ -5,7 +5,7 @@
     "auteur": "adro3i",
     "genre": "chi3i",
     "annee": 2000,
-    "status": "disponible"
+    "status": "emprunte"
   },
   {
     "isbn": "30",
@@ -13,7 +13,7 @@
     "auteur": "abde",
     "genre": "chi3i",
     "annee": 2000,
-    "status": "disponible"
+    "status": "emprunte"
   },
   {
     "isbn": "10",
@@ -21,7 +21,7 @@
     "auteur": "abde",
     "genre": "chi3i",
     "annee": 2000,
-    "status": "disponible"
+    "status": "emprunte"
   },
   {
     "isbn": "40",
@@ -37,7 +37,7 @@
     "auteur": "el jabri",
     "genre": "social",
     "annee": 1949,
-    "status": "disponible"
+    "status": "emprunte"
   },
   {
     "isbn": "60",

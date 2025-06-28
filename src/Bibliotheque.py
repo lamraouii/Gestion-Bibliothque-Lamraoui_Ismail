@@ -92,8 +92,10 @@ class Bibliotheque:
                     livre1= self.__listLivres[str(j)]
                     temp_membre._livres_empruntes.append(livre1)
                 self.__listMembres[int(i["id"])]=temp_membre
-        for id, m in self.__listMembres.items():
-            print(f"[{id}] empruntés:", [liv._isbn for liv in m._livres_empruntes])
+
+            # debug helper nade
+        # for id, m in self.__listMembres.items():
+        #     print(f"[{id}] empruntés:", [liv._isbn for liv in m._livres_empruntes])
 
                 
 
@@ -127,8 +129,10 @@ class Bibliotheque:
                       "livres_empruntes": emprunts_isbn
                       }
                 membre_data.append(data)
-            for data in membre_data:
-                print(f"ID: {data['id']}, emprunts: {data['livres_empruntes']}")
+            # debug helper nade
+            # for data in membre_data:
+            #     print(f"ID: {data['id']}, emprunts: {data['livres_empruntes']}")
+
             json.dump(membre_data,f,indent=2)
 
 
@@ -153,7 +157,7 @@ class Bibliotheque:
             line =f.readline()
             while line:
                 elem= line.split(";") # lines mfar9in b ;
-                if len(elem) != 4 and elem[3].strip() != "emprunt":    # bach n assuriw bli kayni 4 dles champs
+                if len(elem) != 4 or elem[3].strip() != "emprunt":    # bach n assuriw bli kayni 4 dles champs
                     line =f.readline()
                     continue
                 else:
@@ -185,7 +189,7 @@ class Bibliotheque:
             while line:
                 elem= line.split(";")
 
-                if elem[3].strip() != "emprunt" or elem[0] not in last_30_days :
+                if len(elem) != 4 or elem[3].strip() != "emprunt" or elem[0] not in last_30_days :
                     line = f.readline()# to read thenext line before going to next iteration
                     continue
                 else:

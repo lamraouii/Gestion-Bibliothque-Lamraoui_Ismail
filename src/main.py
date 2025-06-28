@@ -25,11 +25,18 @@ try:
     maktaba.charger_data()
     # print(maktaba.getLivres("60"))
     # maktaba.Emprunter_livre(maktaba.getMembbres(4),maktaba.getLivres(10))
-    maktaba.Emprunter_livre(maktaba.getMembbres(4),maktaba.getLivres("40"))
+    maktaba.Emprunter_livre(maktaba.getMembbres(4),maktaba.getLivres("30"))
+    maktaba.Emprunter_livre(maktaba.getMembbres(1),maktaba.getLivres("10"))
+    maktaba.Emprunter_livre(maktaba.getMembbres(2),maktaba.getLivres("50"))
+    maktaba.Emprunter_livre(maktaba.getMembbres(3),maktaba.getLivres("20"))
     maktaba.sauvegarder_data()
     # maktaba.Emprunter_livre(maktaba.getMembbres(5),)
-    maktaba.genre_stats()
-    # maktaba.top_10_authors()    //////////hadi feha error
+    # maktaba.genre_stats()
+
+    maktaba.stats_30_days()   
+    # //////////hadi feha error
+
+
     # maktaba.stats_30_days()
     
     # maktaba.Rendre_livre(bendamo,kes)
