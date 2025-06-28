@@ -1,24 +1,23 @@
 [
   {
+    "id": 10,
+    "nom": "haja",
+    "livres_empruntes": []
+  },
+  {
     "id": 1,
     "nom": "smail",
-    "livres_empruntes": [
-      "10"
-    ]
+    "livres_empruntes": []
   },
   {
     "id": 2,
     "nom": "mehdi",
-    "livres_empruntes": [
-      "50"
-    ]
+    "livres_empruntes": []
   },
   {
     "id": 3,
     "nom": "amine",
-    "livres_empruntes": [
-      "20"
-    ]
+    "livres_empruntes": []
   },
   {
     "id": 4,

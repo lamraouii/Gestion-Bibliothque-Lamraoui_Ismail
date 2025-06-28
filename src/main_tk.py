@@ -95,7 +95,7 @@ membrs_btn= tk.Button(root, text="Afficher Membres", command=affich_membr_action
 membrs_btn.grid(row=3,column=1, padx=10,pady=10)
 
 membr_tbl=ttk.Treeview(root,columns=("id","name","list des livres"),show="headings")
-membr_tbl.grid(row=4, column=1, columnspan=2)
+membr_tbl.grid(row=4, column=3, columnspan=2)
 for col in ("id","name","list des livres"):
     membr_tbl.heading(col, text=col)
     membr_tbl.column(col, width=100)

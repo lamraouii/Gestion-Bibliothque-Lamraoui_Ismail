@@ -1,27 +1,35 @@
 [
   {
+    "isbn": "100",
+    "titre": "py",
+    "auteur": "bouchentouf",
+    "genre": "programation",
+    "annee": 2025,
+    "status": "disponible"
+  },
+  {
     "isbn": "20",
-    "titre": "iran",
+    "titre": "Vagabond",
     "auteur": "adro3i",
-    "genre": "chi3i",
+    "genre": "manga",
     "annee": 2000,
-    "status": "emprunte"
+    "status": "disponible"
   },
   {
     "isbn": "30",
-    "titre": "sran",
+    "titre": "Kingdom",
     "auteur": "abde",
-    "genre": "chi3i",
+    "genre": "manga",
     "annee": 2000,
     "status": "emprunte"
   },
   {
     "isbn": "10",
-    "titre": "sran",
+    "titre": "Anfal",
     "auteur": "abde",
-    "genre": "chi3i",
+    "genre": "diwan",
     "annee": 2000,
-    "status": "emprunte"
+    "status": "disponible"
   },
   {
     "isbn": "40",
@@ -37,7 +45,7 @@
     "auteur": "el jabri",
     "genre": "social",
     "annee": 1949,
-    "status": "emprunte"
+    "status": "disponible"
   },
   {
     "isbn": "60",
@@ -51,7 +59,7 @@
     "isbn": "70",
     "titre": "awlad 7aritna",
     "auteur": "najib mahfod",
-    "genre": "riwaya",
+    "genre": "manga",
     "annee": 2011,
     "status": "disponible"
   }
