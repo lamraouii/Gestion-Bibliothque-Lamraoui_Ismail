@@ -5,7 +5,7 @@ import json
 from Exceptions import *
 from datetime import datetime,timedelta
 from matplotlib import pyplot as plt
-
+from matplotlib.figure import Figure
 
 class Bibliotheque:
     def __init__(self):
@@ -146,11 +146,20 @@ class Bibliotheque:
         values= list(genres_analyseur.values())
         keys=list(genres_analyseur.keys())
         # it would be better ila sortitu(rtebto)
-        plt.pie(values,labels=keys,autopct='%2.1f%%') 
-        # autocapts ky3te this exmpl 18.2%
-        plt.title(r"% de livres par genre")
-        plt.show()
 
+        # plt.pie(values,labels=keys,autopct='%2.1f%%') 
+        # # autocapts ky3te this exmpl 18.2%
+        # plt.title(r"% de livres par genre")
+        # # plt.show()
+
+        fig = Figure(figsize=(4, 3))
+        ax = fig.add_subplot(111)
+        # Draw pie chart on the ax (axes)
+        ax.pie(values, labels=keys, autopct='%2.1f%%')
+        ax.set_title("% de livres par genre")
+        return fig
+    
+        
     def top_10_authors(self):
         all_authors={}
         with open (r"C:\Users\ismai\DevProjects\BibPython\data\historique.csv","r") as f:
@@ -172,10 +181,18 @@ class Bibliotheque:
         # lamda x:x[1] bach nsortiw b lvalues machi bnames d authors
         top_authors=top_authors[:10]
         ky,vl=zip(*top_authors)   # unzip the list 
-        plt.bar(ky,vl)
-        # plt.xticks(rotation=45)  the plot in rotated (i9der ikono smawat twal)
-        plt.title("Top 10 des auteurs les plus populaires")
-        plt.show()
+        # plt.bar(ky,vl)
+        # # plt.xticks(rotation=45)  the plot in rotated (i9der ikono smawat twal)
+        # plt.title("Top 10 des auteurs les plus populaires")
+        # plt.show()
+
+        fig = Figure(figsize=(5, 3))
+        ax = fig.add_subplot(111)
+        ax.bar(ky, vl)
+        ax.set_title("Top 10 des auteurs les plus populaires")
+        ax.tick_params(axis='x', rotation=45)
+        return fig
+
             
     def stats_30_days (self):
         today= datetime.today()
@@ -199,9 +216,19 @@ class Bibliotheque:
                         last_30_day[elem[0]] +=1
 
                 line=f.readline()
-        plt.figure()
-        plt.plot(last_30_days,[last_30_day[d] for d in last_30_days])
-        plt.xticks(rotation=45)
-        plt.title("Activité des emprunts (30 derniers jours)")
-        plt.show()
+        # plt.figure()
+        # plt.plot(last_30_days,[last_30_day[d] for d in last_30_days])
+        # plt.xticks(rotation=45)
+        # plt.title("Activité des emprunts (30 derniers jours)")
+        # plt.show()
+
+        fig = Figure(figsize=(6, 3))
+        ax = fig.add_subplot(111)
+        ax.plot(last_30_days, [last_30_day[d] for d in last_30_days])
+        ax.set_title("Activité des emprunts (30 derniers jours)")
+        ax.tick_params(axis='x', rotation=45)
+    
+        return fig
+
+
 

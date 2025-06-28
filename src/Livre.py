@@ -24,6 +24,6 @@ class Livre :
         else: return False
     
     def __str__(self):
-        return f"the book {self._titre}"
+        return f"book: {self._titre}"
 
 
