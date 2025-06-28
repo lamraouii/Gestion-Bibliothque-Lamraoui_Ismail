@@ -34,12 +34,11 @@ try:
     # maktaba.genre_stats()
 
     maktaba.stats_30_days()   
-    # //////////hadi feha error
 
 
     # maktaba.stats_30_days()
     
     # maktaba.Rendre_livre(bendamo,kes)
     # maktaba.sauvegarder_data()
-except LivreIndisponibleError as e:
+except Exception as e:
     print(f"0 {e}")
