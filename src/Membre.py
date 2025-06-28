@@ -2,10 +2,13 @@ from Livre import Livre
 
 class Membre:
     
-    def __init__(self,ID,nom,livres_empruntes=[]):
-        self._id=ID
+    def __init__(self,ID,nom,livres_empruntes=None):
+        self._id=int(ID)
         self._nom=nom
-        self._livres_empruntes=livres_empruntes
+        if livres_empruntes is None:
+            self._livres_empruntes= []
+        else:
+            self._livres_empruntes=livres_empruntes
         
     def nombreLivre(self):
         return len(self._livres_empruntes)

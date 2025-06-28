@@ -1,11 +1,28 @@
 [
   {
     "id": 1,
-    "nom": "mohamed",
-    "livres_empruntes": ["9780002"]
+    "nom": "smail",
+    "livres_empruntes": []
   },
   {
     "id": 2,
+    "nom": "mehdi",
+    "livres_empruntes": []
+  },
+  {
+    "id": 3,
+    "nom": "amine",
+    "livres_empruntes": []
+  },
+  {
+    "id": 4,
+    "nom": "mohamed",
+    "livres_empruntes": [
+      "40"
+    ]
+  },
+  {
+    "id": 5,
     "nom": "driss",
     "livres_empruntes": []
   }

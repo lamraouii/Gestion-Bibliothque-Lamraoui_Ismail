@@ -7,19 +7,19 @@ class Status(Enum):
 class Livre :
 
     def __init__ (self,ISBN,titre,auteur,genre,annee,status=Status.Dispo):
-        self._isbn=ISBN   
+        self._isbn=str(ISBN)   
         self._titre=titre
         self._auteur=auteur
         self._genre=genre
         self._status=status
         if annee < 0 :
             annee=0
-        self.__annee=annee
+        self._annee=annee
         
         
 
     def is_dispo(self):
-        if self._status==Status.Dispo:
+        if self._status ==Status.Dispo:
             return True
         else: return False
     

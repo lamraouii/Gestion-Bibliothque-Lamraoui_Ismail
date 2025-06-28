@@ -14,15 +14,21 @@ class Bibliotheque:
 
     def AjouterLivre(self,livre):
         if livre._isbn not in self.__listLivres:
-            self.__listLivres[livre._isbn]=livre
+            self.__listLivres[str(livre._isbn)]=livre
             # print(livre)
             # print(self.__listLivres)
         else: return 1
+
+    def getMembbres(self,id):
+        return self.__listMembres[int(id)]
+    
+    def getLivres(self,isbn):
+        return self.__listLivres[str(isbn)]
         
     
     def AjouterMembre(self,membre):
         if membre._id not in self.__listMembres:
-            self.__listMembres[membre._id]=membre
+            self.__listMembres[int(membre._id)]=membre
             # print(membre)
             # print(self.__listMembres)
         else: return 1
@@ -74,49 +80,55 @@ class Bibliotheque:
         with open(r"C:\Users\ismai\DevProjects\BibPython\data\livre.json","r") as f:
             livrdata= json.load(f)
             for i in livrdata:
-                temp_livre= Livre(i["isbn"], i["titre"],i["auteur"],i["genre"],i["annee"],i["status"])
-                self.__listLivres[i["isbn"]]=temp_livre
+                temp_livre= Livre(str(i["isbn"]), i["titre"],i["auteur"],i["genre"],i["annee"],Status(i["status"]))
+                self.__listLivres[str(i["isbn"])]=temp_livre
         
         with open(r"C:\Users\ismai\DevProjects\BibPython\data\membre.json","r") as f:
             membrdata= json.load(f)
             for i in membrdata:
-                temp_membre= Membre(i["id"],i["nom"])
+                temp_membre= Membre(int(i["id"]),i["nom"])
                 for j in i["livres_empruntes"]: # j represent alors le isbn
                     # var=i["livres_empruntes"][j] ///false cz i[livre_emprnt] machi dict its a list 
-                    livre1= self.__listLivres[j]
+                    livre1= self.__listLivres[str(j)]
                     temp_membre._livres_empruntes.append(livre1)
+                self.__listMembres[int(i["id"])]=temp_membre
+        for id, m in self.__listMembres.items():
+            print(f"[{id}] empruntés:", [liv._isbn for liv in m._livres_empruntes])
+
                 
 
 
     def sauvegarder_data(self):
         with open(r"C:\Users\ismai\DevProjects\BibPython\data\livre.json","w") as f:
             livre_data=[]
-            for i in self.__listLivres:
-                temp_livre= self.__listLivres[i]
+            for isbn in self.__listLivres:
+                temp_livre= self.__listLivres[isbn]
                 data={
                     "isbn":temp_livre._isbn,
                       "titre":temp_livre._titre,
                       "auteur":temp_livre._auteur,
                       "genre":temp_livre._genre,
                       "annee":temp_livre._annee,
-                      "status":temp_livre._status
+                      "status":temp_livre._status.value  # cz of the enum Status machi string so we need to add .value ->ktredha string
                       }
                 livre_data.append(data)
             json.dump(livre_data,f,indent=2)
 
         with open(r"C:\Users\ismai\DevProjects\BibPython\data\membre.json","w") as f:
             membre_data=[]
-            for i in self.__listMembres:
-                temp_membre= self.__listMembres[i]
+            for id in self.__listMembres:
+                temp_membre= self.__listMembres[id]
                 emprunts_isbn=[] # bach ncollectiw only isbns of livre
                 for lvr_empr in temp_membre._livres_empruntes:
-                    emprunts_isbn.append(lvr_empr._isbn)
+                    emprunts_isbn.append(str(lvr_empr._isbn))
                 data={
-                      "id":temp_membre._id,
+                      "id":int(temp_membre._id),
                       "nom":temp_membre._nom,
                       "livres_empruntes": emprunts_isbn
                       }
                 membre_data.append(data)
+            for data in membre_data:
+                print(f"ID: {data['id']}, emprunts: {data['livres_empruntes']}")
             json.dump(membre_data,f,indent=2)
 
 
@@ -146,7 +158,7 @@ class Bibliotheque:
                     continue
                 else:
                     temp_isbn=elem[1]
-                author=self.__listLivres[temp_isbn]._auteur
+                author=self.__listLivres[str(temp_isbn)]._auteur
                 if author not in all_authors:
                     all_authors[author]=1
                 else: 
