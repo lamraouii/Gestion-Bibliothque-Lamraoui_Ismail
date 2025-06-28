@@ -1,18 +1,34 @@
 [
   {
-    "isbn": "1111",
-    "titre": "saheh",
-    "auteur": "ana",
-    "annee": 2040,
-    "genre": "fiqh",
-    "statut": "disponible"
-  },
-  {
-    "isbn": "11",
+    "isbn": "9780001",
     "titre": "rasa2il",
     "auteur": "farid",
-    "annee": 2003,
     "genre": "dini",
-    "statut": "emprunte"
+    "annee": 1943,
+    "status": "disponible"
+  },
+  {
+    "isbn": "9780002",
+    "titre": "na9d_l3a9l",
+    "auteur": "el jabri",
+    "genre": "social",
+    "annee": 1949,
+    "status": "emprunt"
+  },
+  {
+    "isbn": "9780003",
+    "titre": "l2amir",
+    "auteur": "makyavelly",
+    "genre": "social",
+    "annee": 2021,
+    "status": "disponible"
+  },
+  {
+    "isbn": "9780004",
+    "titre": "awlad 7aritna",
+    "auteur": "najib mahfod",
+    "genre": "riwaya",
+    "annee": 2011,
+    "status": "disponible"
   }
 ]

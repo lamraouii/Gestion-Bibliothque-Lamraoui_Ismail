@@ -2,11 +2,9 @@ from Livre import Livre
 from Membre import Membre
 from Livre import Status
 import json
-from datetime import datetime #hadi dual curent date
 from Exceptions import *
-import matplotlib.pyplot as plt
-# definitha brra ???? bch nst3mlha west llclass kima bghit 
-
+from datetime import datetime,timedelta
+from matplotlib import pyplot as plt
 
 
 class Bibliotheque:
@@ -122,14 +120,13 @@ class Bibliotheque:
             json.dump(membre_data,f,indent=2)
 
 
-
     def genre_stats(self):
         genres_analyseur={}
         for livre in self.__listLivres.values():
-            if livre.genre not in genres_analyseur:
-                genres_analyseur[livre.genre]=1
+            if livre._genre not in genres_analyseur:
+                genres_analyseur[livre._genre]=1
             else:
-                genres_analyseur[livre.genre] +=1
+                genres_analyseur[livre._genre] +=1
         values= list(genres_analyseur.values())
         keys=list(genres_analyseur.keys())
         # it would be better ila sortitu(rtebto)
@@ -144,7 +141,8 @@ class Bibliotheque:
             line =f.readline()
             while line:
                 elem= line.split(";") # lines mfar9in b ;
-                if len(elem) != 4 and elem[3] != "emprunt":    # bach n assuriw bli kayni 4 dles champs
+                if len(elem) != 4 and elem[3].strip() != "emprunt":    # bach n assuriw bli kayni 4 dles champs
+                    line =f.readline()
                     continue
                 else:
                     temp_isbn=elem[1]
@@ -164,14 +162,30 @@ class Bibliotheque:
         plt.show()
             
     def stats_30_days (self):
-
+        today= datetime.today()
+        last_30_days=[]
+        for i in range(0,30):
+            temp_day= today - timedelta(days=i)
+            last_30_days.append(temp_day.strftime("%Y-%m-%d"))
         with open(r"C:\Users\ismai\DevProjects\BibPython\data\historique.csv","r") as f :
             line=f.readline()
+            last_30_day={d: 0 for d in last_30_days} # bach ta ila kan nhar khawi ikon fih 0
             while line:
                 elem= line.split(";")
-                if elem[3] != "emprunt":
+
+                if elem[3].strip() != "emprunt" or elem[0] not in last_30_days :
+                    line = f.readline()# to read thenext line before going to next iteration
                     continue
-            else:
-                
+                else:
+                    if elem[0] not in last_30_day:
+                        last_30_day[elem[0]]=1
+                    else:
+                        last_30_day[elem[0]] +=1
+
                 line=f.readline()
+        plt.figure()
+        plt.plot(last_30_days,[last_30_day[d] for d in last_30_days])
+        plt.xticks(rotation=45)
+        plt.title("Activité des emprunts (30 derniers jours)")
+        plt.show()
 
