@@ -1,6 +1,6 @@
 Système de Gestion de Bibliothèque--Python
 
-  Description
+  Description :
 Un projet Python pour gérer une bibliothèque : livres, membres, emprunts, retours et statistiques.
 
 ## Fonctionnalités
